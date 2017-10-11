@@ -17,6 +17,8 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+     
+    //Auth::gurd('admin')->check($credentials)
 
     /*
     |--------------------------------------------------------------------------
@@ -45,6 +47,18 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
+        'coach' => [
+            'driver' => 'session',
+            'provider' => 'coaches',
+        ],
     ],
 
     /*
@@ -69,7 +83,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+        'coaches' => [
+            'driver' => 'eloquent',  //We are using eloquent model
+            'model' => App\coaches::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -96,6 +117,11 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 
