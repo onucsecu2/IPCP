@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMarasTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateMarasTable extends Migration
      */
     public function up()
     {
-        Schema::create('maras', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('admins', function (Blueprint $table) {
+            $table->increments('id',100);
+            $table->string('name',100);
+            $table->string('email',100)->unique();
+            $table->string('password',100);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateMarasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maras');
+        Schema::dropIfExists('admins');
     }
 }
