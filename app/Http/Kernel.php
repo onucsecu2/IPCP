@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\RedirectIfCoachAuthenticated;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -33,7 +32,7 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+          //  \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -57,9 +56,5 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'coach_auth' => \App\Http\Middleware\AuthenticateCoach::class,
-        'coach_guest' => \App\Http\Middleware\RedirectIfCoachAuthenticated::class,
-        'admin_auth' => \App\Http\Middleware\AuthenticateAdmin::class,
-        'admin_guest' => \App\Http\Middleware\RedirectIfAdminAuthenticated::class,
     ];
 }
