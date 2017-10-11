@@ -4,7 +4,7 @@
 @endsection
 
 @section('homeIntro')
-        <div class="container">
+        <div>
 
             <div class="navbar-template text-center">
                 <h1>Problems Statements</h1>

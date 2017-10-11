@@ -23,7 +23,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand">
-							Internal Programming Contest-2017
+                            Internal Programming Contest-2017
                     </a>
                 </div>
 
@@ -39,9 +39,6 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
-                            <li><a href="{{ route('coach.login') }}">Coach-Login</a></li>
-                            <li><a href="{{ route('admin.login') }}">Admin-Login</a></li>
-                            <li><a href="{{ route('coach.register') }}">Coach-Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -58,21 +55,19 @@
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
-                                            
                                         </form>
                                     </li>
                                 </ul>
                             </li>
-                            @endif
-                            </ul>
+                        @endif
+                    </ul>
                 </div>
             </div>
-            
         </nav>
-        
+
         @yield('content')
     </div>
-	
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

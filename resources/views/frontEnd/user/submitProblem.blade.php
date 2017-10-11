@@ -5,7 +5,7 @@
 @endsection
 
 @section('homeIntro')
-        <div class="container desc_status">
+        <div class="desc_status">
         <h3>{{Session::get('message')}}</h3>
         <!--  {!!Form::open(['url' => 'settings/saveProblem' ,'method' => 'POST','class'=>'form-horizontal','files'=> 'true'])!!}
         	-->
@@ -42,16 +42,12 @@
                 <input class="form-control" name="solution" type="file" >
                 
                 <br><br>
-                <label>Submitted By</label>
-                <input type="radio" name="submitted_by" value="{{ Auth::user()->name }}" checked>
                 
-                <br><br>
-				
-				
+                
                 <input type="submit" name ="btn" class="btn btn-success btn-block" value="submit"/>
                 
                 <br><br>
- 
+                
                 <br><br>
                 </form>
               <!-- {!! Form::close() !!} --> 

@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Dhaka',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -142,7 +142,6 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -180,7 +179,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-  
+       // Laracasts\Flash\FlashServiceProvider::class,
+        
         
         
 
@@ -235,7 +235,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
 
-        
+        'Input' => Illuminate\Support\Facades\Input::class,
+        //'Flash' => Laracasts\Flash\Flash::class,
 
     ],
 

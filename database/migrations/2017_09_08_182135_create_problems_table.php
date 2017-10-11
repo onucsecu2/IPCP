@@ -15,8 +15,6 @@ class CreateProblemsTable extends Migration
     {
         Schema::create('problems', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('problem',1);
-            $table->int('contest_id');
             $table->text('problem_name');
             $table->Integer('time_limit');
             $table->Integer('memory_limit');
@@ -24,7 +22,6 @@ class CreateProblemsTable extends Migration
             $table->text('in_txt');
             $table->text('out_txt');
             $table->text('solution_txt');
-            $table->text('submitted_by');
             $table->timestamps();
         });
     }
@@ -39,4 +36,3 @@ class CreateProblemsTable extends Migration
         Schema::dropIfExists('problems');
     }
 }
-

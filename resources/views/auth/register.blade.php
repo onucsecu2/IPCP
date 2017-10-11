@@ -9,7 +9,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
-						<div   class="help"> Please,Fill up the form according to <a href="https://icpc.baylor.edu/">acm-baylor</a> .Specially,the email must be given same.If you haven't any icpc.baylor account ,plz open an account first . </div>
+						<div   class="help"> Please,Fill up the form same <a href="https://icpc.baylor.edu/">acm-baylor</a> .Specially,the email must be given same.If you haven't any icpc.baylor account ,plz open an account first . </div>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 

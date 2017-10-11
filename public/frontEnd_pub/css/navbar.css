@@ -1,0 +1,18 @@
+@media (min-width: 767px) {
+    .navbar-nav .dropdown-menu .caret {
+	transform: rotate(-90deg);
+    }
+}
+.side_view{
+	margin-left: 75%;
+	margin-right: 15%;
+}
+.desc_status{
+		margin-top:10%;
+		margin-left:15%;
+		margin-right:15%;
+}
+.double_space{
+		left-alignment:2%;
+		
+}
