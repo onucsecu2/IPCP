@@ -1,15 +1,15 @@
-@extends('layouts.app')
+@extends('coach.layouts')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+            <div class="panel panel-success">
+                <div class="panel-heading">Register A Coach</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/coach/register') }}">
                         {{ csrf_field() }}
-						<div   class="help"> Please,Fill up the form according to <a href="https://icpc.baylor.edu/">acm-baylor</a> .Specially,the email must be given same.If you haven't any icpc.baylor account ,plz open an account first . </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -19,6 +19,19 @@
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="designation" class="col-md-4 control-label">Designation</label>
+
+                            <div class="col-md-6">
+                                <input id="designation" type="text" class="form-control" name="designation" value="{{ old('designation') }}" required autofocus>
+
+                                @if ($errors->has('designation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('designation') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -37,9 +50,6 @@
                                 @endif
                             </div>
                         </div>
-                        
-
-                        
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
@@ -65,8 +75,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
+                                <button type="submit" class="btn btn-success">
+                                    Register Coach
                                 </button>
                             </div>
                         </div>
