@@ -1,5 +1,7 @@
-
 @extends('frontEnd.master')
+@section('title')
+	IPCP-2017
+@endsection
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,5 +86,8 @@
 
 
 </body>
+@section('homeIntro')
 
 </html>
+
+@endsection

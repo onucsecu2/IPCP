@@ -1,21 +1,22 @@
 <?php
 
-
-//controller upload by heto
-
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\UploadedFile;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Problems;
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Debug\Tests\Fixtures\ToStringThrower;
+use App\contest;
+use App\hackerearth;
 use App\contestregister;
 use Request;
+
+// controller Updated by Hetu
 
 class settingController extends Controller
 {
@@ -32,6 +33,18 @@ class settingController extends Controller
     {
         return view('frontEnd.user.submitProblem');
     }
+	public function contestregiseter()
+    {
+        return view('createTeam');
+    }
+	
+    public function registered(Request $request)
+    {
+        contestregister::create(Request::all());
+        //$request->save();
+        //return Request::all() ;
+       
+    }
     public function createTeam()
     {
         $users=User::all();
@@ -40,23 +53,25 @@ class settingController extends Controller
     }
     public function switchToJudge()
     {
-        return view('frontEnd.user.switchToJudge');
+        $mytime = Carbon::now();
+        $qtr=$mytime->toDateTimeString();
+
+        $ptr = DB::table('contests')->where('id', '4')->value('end_time');
+        $str = DB::table('contests')->where('id', '4')->value('start_time');
+        $val=check_date($str,$ptr,$qtr);
+        
+        if($val==1){
+            
+            return "Contest will start".$str." now ".$qtr;
+        }
+        elseif($val==2){
+            return "contest has finished".$ptr."    ".$qtr;
+        }
+        else
+            return view('frontEnd.user.switchToJudge');
+            //return "contest is running";
+
     }
-
-
-    public function contestregiseter()
-    {
-        return view('createTeam');
-    }
-
-    public function registered(Request $request)
-    {
-        contestregister::create(Request::all());
-        //$request->save();
-        //return Request::all() ;
-       
-    }
-
     public function storeProblem(Request $request)
     {
         //return $request->all();
@@ -84,6 +99,7 @@ class settingController extends Controller
         
         
         $request->file('in_txt')->storeAs('public/inputs',$tmp.'_in.txt');
+
         //Storage::putFileAs('public/inputs',$request->file('in_txt'),$tmp.'_in.txt',);
 
        /* $file = $request->file('out_txt');
@@ -107,6 +123,8 @@ class settingController extends Controller
         $problem->in_txt=$tmp.'_in.txt'; 
         $problem->out_txt= $tmp.'_out.txt'; 
         $problem->solution_txt= $tmp.'.cpp';
+        $problem->submitted_by = $request->submitted_by;
+        
         
         $problem->save();
         
